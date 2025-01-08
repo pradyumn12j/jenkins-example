@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage ('Compile Stage') {
 
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
+            steps {withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+{
                     sh 'mvn clean compile'
                 }
             }
@@ -13,8 +13,8 @@ pipeline {
 
         stage ('Testing Stage') {
 
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
+            steps {withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+{
                     sh 'mvn test'
                 }
             }
@@ -22,8 +22,8 @@ pipeline {
 
 
         stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven_3_5_0') {
+            steps {withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+{
                     sh 'mvn package'
                 }
             }
